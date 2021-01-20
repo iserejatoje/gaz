@@ -1,0 +1,458 @@
+@import "variables";
+@import "mixins";
+@import "fonts";
+
+body {
+  background: $white;
+  font-family: Geometria, sans-serif;
+}
+
+.container {
+  max-width: 1800px;
+
+  &.container-padding {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+  }
+}
+
+.burger {
+  margin-left: auto;
+  align-items: center;
+  padding-left: 30px;
+
+  @include respond(0, $mobile-width) {
+    display: flex;
+  }
+  @include respond($mobile-width) {
+    display: none;
+  }
+}
+
+.burger-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 40px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+
+  .burger-line {
+    background: $white;
+    display: block;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      width: 40px;
+      height: 2px;
+      margin-bottom: 9px;
+    }
+    &:nth-child(3) {
+      width: 20px;
+      height: 2px;
+      margin-left: auto;
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.inner {
+  display: flex;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  color: $white;
+  text-decoration: none;
+
+  .description {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.625;
+    margin-left: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+
+.copyright {
+  color: transparentize($white, .5);
+  font-size: 13px;
+  line-height: 2;
+  border-top: 1px solid $dark-line-color;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  padding-top: 15px;
+
+  @include respond(0, $footer-mobile) {
+    margin-bottom: 25px;
+  }
+  @include respond($footer-mobile) {
+    max-width: 240px;
+  }
+}
+
+.contacts-block {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  line-height: 1.449;
+  justify-content: center;
+  color: $white;
+
+  svg {
+    fill: $white;
+    margin-right: 8px;
+  }
+}
+
+header {
+  background: $dark;
+
+  .contacts-block {
+    justify-content: center;
+  }
+
+  .logo-link {
+    height: 100%;
+    width: 100%;
+  }
+
+  .container {
+    @include respond($mobile-width) {
+      margin-left: 52px;
+      margin-right: 52px;
+    }
+    @include respond(0, $mobile-width) {
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .auto-height {
+    height: 100%;
+  }
+
+  .desktop-only {
+    @include respond(0, $mobile-width) {
+      display: none;
+    }
+  }
+
+  .padding-15 {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .inner {
+    min-height: 100px;
+
+    .logo {
+      max-width: 303px;
+      width: 100%;
+      border-left: 1px solid $dark-line-color;
+      border-right: 1px solid $dark-line-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .address {
+      font-size: 14px;
+      flex: 1;
+      border-right: 1px solid $dark-line-color;
+      @include respond(0, 1280px) {
+        display: none;
+      }
+    }
+
+    .contacts {
+      max-width: 268px;
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      border-right: 1px solid $dark-line-color;
+      .phone {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+      .email {
+        font-size: 14px;
+        border-bottom: 1px solid $white;
+      }
+      a {
+        color: $white;
+      }
+    }
+
+    .callback {
+      max-width: 268px;
+      width: 100%;
+      border-right: 1px solid $dark-line-color;
+      a {
+        color: $white;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.667;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        letter-spacing: 1px;
+        justify-content: center;
+      }
+    }
+
+    .logo-link {
+      justify-content: center;
+    }
+
+  }
+}
+
+footer {
+  background: $dark;
+  padding: 45px 0 60px 0;
+  margin-top: 50px;
+  color: $white;
+
+  .contacts-block {
+    @include respond(0, $footer-mobile) {
+      align-items: center;
+    }
+  }
+
+  .inner {
+    @include respond(0, $footer-mobile) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .address {
+    position: relative;
+    font-size: 15px;
+    line-height: 1.933;
+    margin-top: 12px;
+    transform: translateX(-2px);
+    padding-left: 25px;
+    box-sizing: border-box;
+
+    @include respond($footer-mobile) {
+      padding-right: 20px;
+    }
+
+    svg {
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+  }
+
+  .padding-fix {
+    padding-top: 12px;
+  }
+
+  .time-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+
+  .contacts {
+    max-width: 100%;
+    @include respond(0, $footer-mobile) {
+      margin-top: 20px;
+    }
+    @include respond($footer-second-breakpoint) {
+      width: 100%;
+    }
+  }
+
+  .icons-title {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .for-medium {
+    @include respond($footer-second-breakpoint) {
+      display: none;
+    }
+  }
+
+  .for-large {
+    @include respond(0, $footer-second-breakpoint) {
+      display: none;
+    }
+  }
+
+  .icons-list {
+    display: flex;
+    margin-top: 24px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $dark-line-color;
+      width: 43px;
+      height: 43px;     
+
+      &:hover {
+        background: $yellow;
+        border-color: $yellow;
+        svg {
+          fill: $dark;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+    svg {
+      fill: transparentize($white, .6);
+    }
+  }
+
+  .combined {
+    margin-top: 20px;
+    @include respond(0, $footer-mobile) {
+      text-align: center;
+    }
+    @include respond($footer-breakpoint) {
+      display: none;
+    }
+  }
+
+  .time {
+    max-width: 388px;
+    width: 100%;
+    padding-right: 20px;
+    box-sizing: border-box;
+
+    @include respond(0, $footer-breakpoint) {
+      display: none;
+    }
+  }
+
+  .callback {
+    text-decoration: none;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-bottom: 1px solid;
+    margin-top: 9px;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .email {
+    font-size: 21px;
+    color: $white;
+    font-weight: bold;
+    margin-top: 25px;
+    text-decoration: none;
+    line-height: 1.158;
+    border-bottom: 1px solid;
+  }
+
+  .time-list {
+    font-size: 15px;
+    .time-item {
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+    span {
+      font-weight: 500;
+    }
+  }
+
+  .container {
+    @include respond($mobile-width) {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+  }
+
+  .logo {
+    @include respond(0, $footer-mobile) {
+      text-align: center;
+    }
+    @include respond($footer-mobile) {
+      width: 100%;
+      padding-right: 20px;
+      box-sizing: border-box;
+    }
+    @include respond($footer-breakpoint) {
+      max-width: 395px;
+    }
+    @include respond($footer-second-breakpoint, $footer-breakpoint) {
+      max-width: 318px;
+    }
+    @include respond($footer-mobile, $footer-second-breakpoint) {
+      max-width: 345px;
+    }
+
+  }
+
+  .phone {
+    color: $white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 21px;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    
+    @include respond(0, $footer-mobile) {
+      align-items: center;
+      margin-top: 20px;
+    }
+    @include respond($footer-mobile) {
+      width: 100%;
+      align-items: flex-start;
+    }
+    @include respond($footer-breakpoint) {
+      max-width: 330px;
+    }
+    @include respond($footer-mobile, $footer-breakpoint) {
+      max-width: 230px;
+    }
+
+    a {
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      color: $white;
+
+      &.active {
+        color: transparentize($white, .7);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 19px;
+      }
+    }
+  }
+}
