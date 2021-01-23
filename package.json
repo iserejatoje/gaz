@@ -30,7 +30,9 @@
     "jquery": "^3.5.1"
   },
   "dependencies": {
+    "imask": "^6.0.5",
     "jquery-mask-plugin": "^1.14.16",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "nouislider": "^14.6.3"
   }
 }

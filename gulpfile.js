@@ -8,9 +8,10 @@ let paths = {
     scripts: {
         src: [
             'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
-            // baseDir + '/js/jquery.mask.min.js',
-            // baseDir + '/js/swiperjs.js',
+            'node_modules/nouislider/distribute/nouislider.min.js',
+            'node_modules/imask/dist/imask.min.js',
+            baseDir + '/js/wNumb.min.js',
+            baseDir + '/js/jquery.nanoscroller.min.js',
             baseDir + '/js/app.js'
         ],
         dest: baseDir + '/js',
@@ -19,7 +20,8 @@ let paths = {
     styles: {
         src: [
             'node_modules/normalize.css/normalize.css',
-            baseDir + '/' + preprocessor + '/main.*'
+            baseDir + '/' + preprocessor + '/nouislider.scss',
+            baseDir + '/' + preprocessor + '/main.scss'
         ],
         dest: baseDir + '/css',
     },
