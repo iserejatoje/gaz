@@ -1357,9 +1357,11 @@ select {
     font-size: 18px;
     border: none;
     outline: none;
-    display: inline-flex;
+    display: flex;
+    background: transparent;
     align-items: center;
     margin: 40px 0;
+    width: 100%;
     cursor: pointer;
     padding: 0; }
     @media only all and (min-width: 1024px) {
