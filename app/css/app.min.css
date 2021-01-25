@@ -1367,10 +1367,10 @@ select {
     display: flex;
     background: transparent;
     align-items: center;
-    margin: 40px 0;
     width: 100%;
     cursor: pointer;
-    padding: 0; }
+    padding: 0;
+    margin: 40px 0; }
     @media only all and (min-width: 1024px) {
       .page-content .mobile-filter_toggle {
         display: none; } }
@@ -1403,6 +1403,74 @@ select {
       .page-content .page-title .selectric-wrapper {
         max-width: 335px; } }
 
+body.menu-opened {
+  overflow: hidden; }
+  body.menu-opened .popup-menu {
+    display: block; }
+
+.menu-close {
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .menu-close svg {
+    fill: #fff;
+    display: block; }
+
+.popup-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  overflow: auto;
+  background: #172027;
+  color: #fff;
+  padding: 65px 20px 35px 20px;
+  display: none;
+  overflow: auto; }
+  .popup-menu .icons-title {
+    text-align: center;
+    margin-top: 35px; }
+  .popup-menu .icons-list {
+    justify-content: center; }
+  .popup-menu .phone {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-decoration: none; }
+  .popup-menu .contacts {
+    text-align: center;
+    margin: 25px 0; }
+  .popup-menu .email {
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none; }
+  .popup-menu .logo {
+    text-align: center; }
+  .popup-menu .callback {
+    text-align: center; }
+    .popup-menu .callback a {
+      font-size: 17px;
+      color: #fff;
+      padding-bottom: 2px;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: 1px solid; }
+  .popup-menu .address {
+    margin: 28px 0; }
+
 .copyright {
   color: rgba(255, 255, 255, 0.5);
   font-size: 13px;
@@ -1420,9 +1488,7 @@ select {
 
 .contacts-block {
   display: inline-flex;
-  flex-direction: column;
-  text-align: left;
-  align-items: flex-start; }
+  flex-direction: column; }
 
 .address {
   display: flex;
@@ -1439,7 +1505,9 @@ header {
   position: relative;
   z-index: 2; }
   header .contacts-block {
-    justify-content: center; }
+    justify-content: center;
+    text-align: left;
+    align-items: flex-start; }
   header .logo-link {
     height: 100%;
     width: 100%; }
@@ -1511,6 +1579,30 @@ header {
     header .inner .logo-link {
       justify-content: center; }
 
+.icons-list {
+  display: flex;
+  margin-top: 24px; }
+  .icons-list a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2f373d;
+    width: 43px;
+    height: 43px; }
+    .icons-list a:hover {
+      background: #ffdc56;
+      border-color: #ffdc56; }
+      .icons-list a:hover svg {
+        fill: #172027; }
+    .icons-list a:not(:last-child) {
+      margin-right: 15px; }
+  .icons-list svg {
+    fill: rgba(255, 255, 255, 0.4); }
+
+.icons-title {
+  font-size: 17px;
+  font-weight: bold; }
+
 footer {
   background: #172027;
   padding: 45px 0 60px 0;
@@ -1553,34 +1645,12 @@ footer {
     @media only all and (min-width: 1240px) {
       footer .contacts {
         width: 100%; } }
-  footer .icons-title {
-    font-size: 17px;
-    font-weight: bold; }
   @media only all and (min-width: 1240px) {
     footer .for-medium {
       display: none; } }
   @media only all and (min-width: 0) and (max-width: 1239px) {
     footer .for-large {
       display: none; } }
-  footer .icons-list {
-    display: flex;
-    margin-top: 24px; }
-    footer .icons-list a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #2f373d;
-      width: 43px;
-      height: 43px; }
-      footer .icons-list a:hover {
-        background: #ffdc56;
-        border-color: #ffdc56; }
-        footer .icons-list a:hover svg {
-          fill: #172027; }
-      footer .icons-list a:not(:last-child) {
-        margin-right: 15px; }
-    footer .icons-list svg {
-      fill: rgba(255, 255, 255, 0.4); }
   footer .combined {
     margin-top: 20px; }
     @media only all and (min-width: 0) and (max-width: 1023px) {

@@ -138,5 +138,13 @@ $(function () {
     filterInitPosition();
   });
 
+  $('.burger-button').on('click', function() {
+    $('body').addClass('menu-opened');
+  });
+
+  $('.menu-close').on('click', function() {
+    $('body').removeClass('menu-opened');
+  });
+
   $(".filter").addClass("fade-in");
 });

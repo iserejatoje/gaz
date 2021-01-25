@@ -538,10 +538,10 @@ select {
     display: flex;
     background: transparent;
     align-items: center;
-    margin: 40px 0;
     width: 100%;
     cursor: pointer;
     padding: 0;
+    margin: 40px 0;
 
     @include respond($mobile-width) {
       display: none;
@@ -590,6 +590,93 @@ select {
   }
 }
 
+body.menu-opened {
+  overflow: hidden;
+
+  .popup-menu {
+    display: block;
+  }
+}
+
+.menu-close {
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: $white;
+    display: block;
+  }
+}
+
+.popup-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  overflow: auto;
+  background: $dark;
+  color: $white;
+  padding: 65px 20px 35px 20px;
+  display: none;
+  overflow: auto;
+
+  .icons-title {
+    text-align: center;
+    margin-top: 35px;
+  }
+
+  .icons-list {
+    justify-content: center;
+  }
+
+  .phone {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: $white;
+    text-decoration: none;
+  }
+  .contacts {
+    text-align: center;
+    margin: 25px 0;
+  }
+  .email {
+    font-weight: bold;
+    font-size: 15px;
+    color: $white;
+    text-decoration: none;
+  }
+  .logo {
+    text-align: center;
+  }
+  .callback {
+    text-align: center;
+    a {
+      font-size: 17px;
+      color: $white;
+      padding-bottom: 2px;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: 1px solid;
+    }
+  }
+  .address {
+    margin: 28px 0;
+  }
+}
+
 .copyright {
   color: transparentize($white, 0.5);
   font-size: 13px;
@@ -610,8 +697,6 @@ select {
 .contacts-block {
   display: inline-flex;
   flex-direction: column;
-  text-align: left;
-  align-items: flex-start;
 }
 
 .address {
@@ -634,6 +719,8 @@ header {
 
   .contacts-block {
     justify-content: center;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .logo-link {
@@ -737,6 +824,40 @@ header {
   }
 }
 
+.icons-list {
+  display: flex;
+  margin-top: 24px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $dark-line-color;
+    width: 43px;
+    height: 43px;
+
+    &:hover {
+      background: $yellow;
+      border-color: $yellow;
+      svg {
+        fill: $dark;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+  svg {
+    fill: transparentize($white, 0.6);
+  }
+}
+
+.icons-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
 footer {
   background: $dark;
   padding: 45px 0 60px 0;
@@ -796,11 +917,6 @@ footer {
     }
   }
 
-  .icons-title {
-    font-size: 17px;
-    font-weight: bold;
-  }
-
   .for-medium {
     @include respond($footer-second-breakpoint) {
       display: none;
@@ -813,34 +929,6 @@ footer {
     }
   }
 
-  .icons-list {
-    display: flex;
-    margin-top: 24px;
-
-    a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $dark-line-color;
-      width: 43px;
-      height: 43px;
-
-      &:hover {
-        background: $yellow;
-        border-color: $yellow;
-        svg {
-          fill: $dark;
-        }
-      }
-
-      &:not(:last-child) {
-        margin-right: 15px;
-      }
-    }
-    svg {
-      fill: transparentize($white, 0.6);
-    }
-  }
 
   .combined {
     margin-top: 20px;
