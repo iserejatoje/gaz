@@ -1340,6 +1340,10 @@ body.body-filter .page-content {
   text-transform: uppercase;
   outline: none; }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent; }
+
 select {
   opacity: 0;
   height: 50px; }
@@ -1349,9 +1353,12 @@ select {
   @media only all and (min-width: 1367px) {
     .page-content {
       padding: 52px 68px 106px 68px; } }
-  @media only all and (min-width: 0) and (max-width: 1366px) {
+  @media only all and (min-width: 1024px) and (max-width: 1366px) {
     .page-content {
       padding: 45px 38px; } }
+  @media only all and (min-width: 0) and (max-width: 1023px) {
+    .page-content {
+      padding: 30px 25px; } }
   .page-content .mobile-filter_toggle {
     font-family: Verdana, sans-serif;
     font-size: 18px;

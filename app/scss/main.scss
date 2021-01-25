@@ -507,6 +507,11 @@ body {
   outline: none;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 select {
   opacity: 0;
   height: 50px;
@@ -518,8 +523,11 @@ select {
   @include respond(1367px) {
     padding: 52px 68px 106px 68px;
   }
-  @include respond(0, 1367px) {
+  @include respond($mobile-width, 1367px) {
     padding: 45px 38px;
+  }
+  @include respond(0, $mobile-width) {
+    padding: 30px 25px;
   }
 
   .mobile-filter_toggle {
