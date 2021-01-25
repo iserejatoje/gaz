@@ -1,6 +1,6 @@
 @import "variables";
 @import "mixins";
-@import "selectric";
+@import "old_selectric";
 @import "nano";
 @import "fonts";
 
@@ -520,10 +520,6 @@ select {
   }
   @include respond(0, 1367px) {
     padding: 45px 38px;
-  }
-
-  select {
-    // height: 50px;
   }
 
   .mobile-filter_toggle {
