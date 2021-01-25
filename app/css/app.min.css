@@ -607,9 +607,9 @@ template {
   text-overflow: ellipsis;
   margin: 0 46px 0 20px;
   font-size: 14px;
-  line-height: 46px;
+  line-height: 48px;
   color: #252b33;
-  height: 46px;
+  height: 48px;
   user-select: none;
   font-family: Verdana, sans-serif; }
 
@@ -1352,6 +1352,8 @@ select {
   @media only all and (min-width: 0) and (max-width: 1366px) {
     .page-content {
       padding: 45px 38px; } }
+  .page-content select {
+    height: 50px; }
   .page-content .mobile-filter_toggle {
     font-family: Verdana, sans-serif;
     font-size: 18px;
