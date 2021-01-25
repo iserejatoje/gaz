@@ -1,6 +1,6 @@
 @import "variables";
 @import "mixins";
-@import "old_selectric";
+@import "selectric";
 @import "nano";
 @import "fonts";
 
@@ -508,8 +508,8 @@ body {
 }
 
 select {
-  visibility: hidden;
   opacity: 0;
+  height: 50px;
 }
 
 .page-content {
