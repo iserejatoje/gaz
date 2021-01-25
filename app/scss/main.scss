@@ -643,8 +643,8 @@ body.menu-opened {
 
   .phone {
     font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
     color: $white;
     text-decoration: none;
   }
@@ -654,7 +654,7 @@ body.menu-opened {
   }
   .email {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     color: $white;
     text-decoration: none;
   }
@@ -712,6 +712,14 @@ body.menu-opened {
   }
 }
 
+header,
+footer {
+  .contacts-block {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
 header {
   background: $dark;
   position: relative;
@@ -719,8 +727,6 @@ header {
 
   .contacts-block {
     justify-content: center;
-    text-align: left;
-    align-items: flex-start;
   }
 
   .logo-link {

@@ -1445,8 +1445,8 @@ body.menu-opened {
     justify-content: center; }
   .popup-menu .phone {
     font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
     color: #fff;
     text-decoration: none; }
   .popup-menu .contacts {
@@ -1454,7 +1454,7 @@ body.menu-opened {
     margin: 25px 0; }
   .popup-menu .email {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     color: #fff;
     text-decoration: none; }
   .popup-menu .logo {
@@ -1500,14 +1500,17 @@ body.menu-opened {
     fill: #fff;
     margin-right: 8px; }
 
+header .contacts-block,
+footer .contacts-block {
+  text-align: left;
+  align-items: flex-start; }
+
 header {
   background: #172027;
   position: relative;
   z-index: 2; }
   header .contacts-block {
-    justify-content: center;
-    text-align: left;
-    align-items: flex-start; }
+    justify-content: center; }
   header .logo-link {
     height: 100%;
     width: 100%; }
