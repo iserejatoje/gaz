@@ -33,6 +33,7 @@
     "imask": "^6.0.5",
     "jquery-mask-plugin": "^1.14.16",
     "normalize.css": "^8.0.1",
-    "nouislider": "^14.6.3"
+    "nouislider": "^14.6.3",
+    "selectric": "^1.13.0"
   }
 }

@@ -11,6 +11,7 @@ let paths = {
             'node_modules/nouislider/distribute/nouislider.min.js',
             'node_modules/imask/dist/imask.min.js',
             baseDir + '/js/wNumb.min.js',
+            baseDir + '/js/selectric.min.js',
             baseDir + '/js/jquery.nanoscroller.min.js',
             baseDir + '/js/app.js'
         ],
