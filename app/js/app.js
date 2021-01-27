@@ -1,54 +1,54 @@
 $(function () {
+  let $select = $("select");
+  if ($select.length > 0) $select.selectric();
 
-  let $select = $('select');
-  if ($select.length > 0)
-      $select.selectric();
-
-  $(".filter-row_toggle").on("click", function (e) {
-    $(this).closest(".filter-row").toggleClass("open");
-    e.preventDefault();
-  });
-
-  let priceSlider = document.getElementById("price-slider");
-
-  noUiSlider.create(priceSlider, {
-    start: [0, 5000],
-    connect: true,
-    format: wNumb({
-      thousand: " ",
-      decimals: 0,
-    }),
-    range: {
-      min: [0],
-      max: [10000],
-    },
-  });
-
-  var prices = [
-    document.getElementById("price_from"),
-    document.getElementById("price_to"),
-  ];
-
-  priceSlider.noUiSlider.on(
-    "update",
-    function (values, handle, unencoded, isTap, positions, noUiSlider) {
-      prices[handle].value = values[handle];
-    },
-  );
-
-  prices.forEach(function (input, handle) {
-    input.addEventListener("change", function () {
-      priceSlider.noUiSlider.setHandle(handle, this.value);
+  if ($(".filter").length > 0) {
+    $(".filter-row_toggle").on("click", function (e) {
+      $(this).closest(".filter-row").toggleClass("open");
+      e.preventDefault();
     });
 
-    input.addEventListener("keydown", function (e) {
-      switch (e.which) {
-        case 13:
-          priceSlider.noUiSlider.setHandle(handle, this.value);
-          break;
-      }
+    let priceSlider = document.getElementById("price-slider");
+
+    noUiSlider.create(priceSlider, {
+      start: [0, 5000],
+      connect: true,
+      format: wNumb({
+        thousand: " ",
+        decimals: 0,
+      }),
+      range: {
+        min: [0],
+        max: [10000],
+      },
     });
-  });
+
+    var prices = [
+      document.getElementById("price_from"),
+      document.getElementById("price_to"),
+    ];
+
+    priceSlider.noUiSlider.on(
+      "update",
+      function (values, handle, unencoded, isTap, positions, noUiSlider) {
+        prices[handle].value = values[handle];
+      },
+    );
+
+    prices.forEach(function (input, handle) {
+      input.addEventListener("change", function () {
+        priceSlider.noUiSlider.setHandle(handle, this.value);
+      });
+
+      input.addEventListener("keydown", function (e) {
+        switch (e.which) {
+          case 13:
+            priceSlider.noUiSlider.setHandle(handle, this.value);
+            break;
+        }
+      });
+    });
+  }
 
   var numbers = document.querySelectorAll(".number-format"),
     maskOptions = {
@@ -60,37 +60,34 @@ $(function () {
     IMask(numbers[i], maskOptions);
   }
 
-  $(".nano").nanoScroller({ iOSNativeScrolling: true });
+  if ($(".filter").length > 0)
+    $(".nano").nanoScroller({ iOSNativeScrolling: true });
 
   function filterInitScrollPosition() {
-    if ($('.filter').is(':visible')) {
-      
+    if ($(".filter").is(":visible")) {
       if ($(window).scrollTop() >= $("header").height()) {
         $(".filter").addClass("filter-fixed");
         $("body").addClass("body-filter");
 
         filterInitPosition();
       } else {
-        $(".filter").css("bottom", "0");
-
-        $(".filter").removeClass("filter-fixed");
+        $(".filter").css("bottom", "0").removeClass("filter-fixed");
         $("body").removeClass("body-filter");
-        $(".nano").nanoScroller({ destroy: true });
-        $(".nano").nanoScroller();
+        $(".nano").nanoScroller({ destroy: true }).nanoScroller();
       }
     }
   }
 
   function getRectTop(el) {
-    var rect = el.getBoundingClientRect();
+    let rect = el.getBoundingClientRect();
     return rect.top;
   }
 
   function filterInitPosition() {
-
-    if ($('.filter').is(':visible')) {
+    if ($(".filter").is(":visible")) {
       let bottom =
-        window.innerHeight - ($("footer").offset().top - $(document).scrollTop());
+        window.innerHeight -
+        ($("footer").offset().top - $(document).scrollTop());
 
       if (
         window.innerHeight -
@@ -120,8 +117,6 @@ $(function () {
     }
   }
 
-  filterInitScrollPosition();
-
   function setFilterHeight() {
     $(".filter form").css(
       "height",
@@ -138,13 +133,42 @@ $(function () {
     filterInitPosition();
   });
 
-  $('.burger-button').on('click', function() {
-    $('body').addClass('menu-opened');
+  $(".burger-button").on("click", function () {
+    $("body").addClass("menu-opened");
   });
 
-  $('.menu-close').on('click', function() {
-    $('body').removeClass('menu-opened');
+  $(".menu-close").on("click", function () {
+    $("body").removeClass("menu-opened");
   });
 
-  $(".filter").addClass("fade-in");
+  $(".toggle").on("click", function () {
+    let bool = $(this).closest('.toggle-wrapper').hasClass('opened');
+    $(this).closest('.toggle-wrapper').toggleClass("opened");
+    if (!bool) {
+      $(this).find('.text').html('Свернуть')
+      return false;
+    } else {
+      $(this).find('.text').html('Развернуть')
+      return false;
+    }
+  });
+
+  filterInitScrollPosition();
+
+  if ($(".filter").length > 0) $(".filter").addClass("fade-in");
+
+  let swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      1220: {
+        slidesPerView: 2,
+      },
+      1600: {
+        slidesPerView: 3,
+      },
+    }
+  });
 });

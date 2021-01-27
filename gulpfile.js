@@ -10,6 +10,7 @@ let paths = {
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/nouislider/distribute/nouislider.min.js',
             'node_modules/imask/dist/imask.min.js',
+            baseDir + '/js/swiper-bundle.min.js',
             baseDir + '/js/wNumb.min.js',
             baseDir + '/js/selectric.min.js',
             baseDir + '/js/jquery.nanoscroller.min.js',
@@ -22,6 +23,7 @@ let paths = {
         src: [
             'node_modules/normalize.css/normalize.css',
             baseDir + '/' + preprocessor + '/nouislider.scss',
+            baseDir + '/' + preprocessor + '/swiper-bundle.min.scss',
             baseDir + '/' + preprocessor + '/main.scss'
         ],
         dest: baseDir + '/css',
