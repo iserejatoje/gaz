@@ -1773,7 +1773,7 @@ body.body-filter .page-content {
         padding: 22px 40px 38px 40px; } }
     @media only all and (min-width: 0) and (max-width: 1399px) {
       .card .card-content {
-        padding: 22px 25px 38px 25px; } }
+        padding: 22px 25px; } }
   .card .name {
     color: #172027;
     font-weight: bold;

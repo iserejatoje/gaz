@@ -499,7 +499,7 @@ body {
       padding: 22px 40px 38px 40px;
     }
     @include respond(0, 1400px) {
-      padding: 22px 25px 38px 25px;
+      padding: 22px 25px;
     }
     background: $white;
   }
