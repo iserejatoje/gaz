@@ -1,15 +1,21 @@
 $(function () {
-  let $select = $("select");
+  let
+      $select = $("select");
+
   if ($select.length > 0) $select.selectric();
 
   if ($(".filter").length > 0) {
+
     $(".filter-row_toggle").on("click", function (e) {
       $(this).closest(".filter-row").toggleClass("open");
       e.preventDefault();
     });
 
-    let priceSlider = document.getElementById("price-slider");
+    //
+    //
+    //
 
+    let priceSlider = document.getElementById("price-slider");
     noUiSlider.create(priceSlider, {
       start: [0, 5000],
       connect: true,
@@ -23,7 +29,7 @@ $(function () {
       },
     });
 
-    var prices = [
+    let prices = [
       document.getElementById("price_from"),
       document.getElementById("price_to"),
     ];
@@ -48,16 +54,78 @@ $(function () {
         }
       });
     });
-  }
 
-  var numbers = document.querySelectorAll(".number-format"),
-    maskOptions = {
-      mask: Number,
-      thousandsSeparator: " ",
-    };
 
-  for (let i = 0; i < numbers.length; i++) {
-    IMask(numbers[i], maskOptions);
+    //
+    //
+    //
+
+    let yearSlider = document.getElementById("year-slider");
+
+    noUiSlider.create(yearSlider, {
+      start: [2000, 2021],
+      connect: true,
+      format: wNumb({
+        thousand: "",
+        decimals: 0,
+      }),
+      range: {
+        min: [2000],
+        max: [2021],
+      },
+    });
+
+    let years = [
+      document.getElementById("year_from"),
+      document.getElementById("year_to"),
+    ];
+
+    yearSlider.noUiSlider.on(
+      "update",
+      function (values, handle, unencoded, isTap, positions, noUiSlider) {
+        years[handle].value = values[handle];
+      },
+    );
+
+    years.forEach(function (input, handle) {
+      input.addEventListener("change", function () {
+        yearSlider.noUiSlider.setHandle(handle, this.value);
+      });
+
+      input.addEventListener("keydown", function (e) {
+        switch (e.which) {
+          case 13:
+            priceSlider.noUiSlider.setHandle(handle, this.value);
+            break;
+        }
+      });
+    });
+
+  //
+  //
+  //
+
+    let numbers = document.querySelectorAll(".number-format"),
+        maskOptions = {
+          mask: Number,
+          thousandsSeparator: " ",
+        };
+
+    for (let i = 0; i < numbers.length; i++) {
+      IMask(numbers[i], maskOptions);
+    }
+
+    let years_numbers = document.querySelectorAll(".number"),
+        maskOptionsYears = {
+          mask: Number,
+          maxLength: 4,
+          thousandsSeparator: "",
+        };
+
+    for (let i = 0; i < years_numbers.length; i++) {
+      IMask(years_numbers[i], maskOptionsYears);
+    }
+
   }
 
   if ($(".filter").length > 0)
@@ -169,6 +237,10 @@ $(function () {
       1600: {
         slidesPerView: 3,
       },
-    }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
 });

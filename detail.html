@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="ГАЗ Автоцентр Кузбасс">
     <title>ГАЗ &mdash; Автоцентр Кузбасс</title>
+    <link rel="preload" href="app/fonts/Geometria.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" href="app/fonts/Geometria-Bold.woff" as="font" type="font/woff" crossorigin="anonymous">
     <link rel="preload" href="app/fonts/Geometria-Medium.woff" as="font" type="font/woff" crossorigin="anonymous">
     <link rel="stylesheet" href="app/css/app.min.css">
 </head>
@@ -60,7 +62,7 @@
       
         <div class="top-panel">
           <div class="back-block">
-            <a href="" class="back-link"><svg class="arrow" width="15" height="15"><use xlink:href="#arrow"></use></svg> К списку автомобилей</a>
+            <a href="/" class="back-link"><svg class="arrow" width="15" height="15"><use xlink:href="#arrow"></use></svg> К списку автомобилей</a>
           </div>
           <div class="title-block">Mercedes-Benz E63 AMG</div>
         </div>
@@ -161,7 +163,13 @@
                     </div>
                 </div>
                 <div class="car-slider padding">
-                    <div class="title">Похожие автомобили</div>
+                    <div class="slider-controls">
+                        <div class="title">Похожие автомобили</div>
+                        <div class="controls">
+                            <div class="swiper-button-prev"><svg><use xlink:href="#arrow"></use></svg></div>
+                            <div class="swiper-button-next"><svg><use xlink:href="#arrow"></use></svg></div>
+                        </div>
+                    </div>
 
                     <div class="swiper-container">
                         <div class="swiper-wrapper">

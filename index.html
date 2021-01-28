@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="ГАЗ Автоцентр Кузбасс">
     <title>ГАЗ &mdash; Автоцентр Кузбасс</title>
+    <link rel="preload" href="app/fonts/Geometria.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" href="app/fonts/Geometria-Bold.woff" as="font" type="font/woff" crossorigin="anonymous">
     <link rel="preload" href="app/fonts/Geometria-Medium.woff" as="font" type="font/woff" crossorigin="anonymous">
     <link rel="stylesheet" href="app/css/app.min.css">
 </head>
@@ -68,12 +70,25 @@
                             </a>
                             <div class="filter-options">
                                 <div class="filter-inputs">
-                                    <input title="" type="text" id="price_from" class="number-format" name="price[0]" value="920 400">
+                                    <input type="text" id="price_from" class="number-format" name="price[0]" value="920 400">
                                     <span>–</span>
-                                    <input title="" type="text" id="price_to" class="number-format" name="price[1]" value="2 514 400">
+                                    <input type="text" id="price_to" class="number-format" name="price[1]" value="2 514 400">
 
                                 </div>
                                 <div id="price-slider"></div>
+                            </div>
+                        </div>
+                        <div class="filter-row filter-year">
+                            <a href="" class="filter-row_toggle">
+                                Год выпуска <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
+                            </a>
+                            <div class="filter-options">
+                                <div class="filter-inputs">
+                                    <input type="text" id="year_from" maxlength="4" class="number" name="year[0]" value="2000">
+                                    <span>–</span>
+                                    <input type="text" id="year_to" maxlength="4" class="number" name="year[1]" value="2020">
+                                </div>
+                                <div id="year-slider"></div>
                             </div>
                         </div>
                         <div class="filter-row">
@@ -102,41 +117,183 @@
                             <a href="" class="filter-row_toggle">
                                 Бренд <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[2]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[2]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[2]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Модель <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[3]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[3]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[3]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Коробка передач <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[4]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[4]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[4]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Назначение <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[5]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[5]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[5]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Тип привода <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[6" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[6]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[6]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Тип двигателя <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[7]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[7]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[7]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Объем двигателя, л <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[8]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[8]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[8]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-row">
                             <a href="" class="filter-row_toggle">
                                 Мощность двигателя, л.с. <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
                             </a>
+                        </div>
+                        <div class="filter-row">
+                            <a href="" class="filter-row_toggle">
+                                Пассажировместимость <span class="pointer"><svg width="14" height="14"><use xlink:href="#pointer"></use></svg></span>
+                            </a>
+                            <div class="filter-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[10]" value="Легковой">
+                                    <span></span>
+                                    Легковой (12)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[10]" value="Коммерческий">
+                                    <span></span>
+                                    Коммерческий (3)
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="filter[10]" value="Спецтехника">
+                                    <span></span>
+                                    Спецтехника (3)
+                                </label>
+                            </div>
                         </div>
                         <div class="filter-bottom">
                             <button type="reset" class="filter-reset_button">
@@ -157,14 +314,13 @@
                         Фильтры
                     </button>
 
-                    <select title="" name="sort" id="">
+                    <select name="sort" id="">
                         <option value="0">По умолчанию</option>
                         <option value="1">По возрастанию цены</option>
                         <option value="2">По убыванию цены</option>
                     </select>
                 </div>
                 <div class="catalog">
-
 
                     <div class="card">
                         <a href="#" class="image">
