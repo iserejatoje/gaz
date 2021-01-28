@@ -1793,6 +1793,14 @@ body.body-filter .page-content {
   display: flex;
   justify-content: center; }
 
+.filter-row:not(.open) .filter-row_toggle {
+  margin: -25px;
+  padding: 25px; }
+
+.open .filter-row_toggle {
+  margin: -25px -25px -10px;
+  padding: 25px 25px 10px; }
+
 .yellow-button {
   background: #ffdc56;
   max-width: 270px;
