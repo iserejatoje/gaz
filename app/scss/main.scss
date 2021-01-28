@@ -439,10 +439,15 @@ body {
 
   .options {
     color: $option-color;
-    font-size: 17px;
     margin-top: 20px;
     line-height: 1.646;
     font-family: Verdana, sans-serif;
+    @include respond(1400px) {
+      font-size: 17px;
+    }
+    @include respond(0, 1400px) {
+      font-size: 15px;
+    }
   }
 
   &:hover {
@@ -481,15 +486,30 @@ body {
   .tags {
     font-family: Verdana, sans-serif;
     display: flex;
-    font-size: 17px;
     margin-top: 9px;
+    @include respond(1400px) {
+      font-size: 17px;
+    }
+    @include respond(0, 1400px) {
+      font-size: 15px;
+    }
   }
   .card-content {
-    padding: 22px 40px 38px 40px;
+    @include respond(1400px) {
+      padding: 22px 40px 38px 40px;
+    }
+    @include respond(0, 1400px) {
+      padding: 22px 25px 38px 25px;
+    }
     background: $white;
   }
   .name {
-    font-size: 28px;
+    @include respond(1400px) {
+      font-size: 28px;
+    }
+    @include respond(0, 1400px) {
+      font-size: 21px;
+    }
     color: $dark;
     font-weight: bold;
     line-height: 1.475;
@@ -534,10 +554,10 @@ select {
 .page-content {
   flex: 1;
 
-  @include respond(1367px) {
+  @include respond(1450px) {
     padding: 52px 68px 106px 68px;
   }
-  @include respond($mobile-width, 1367px) {
+  @include respond($mobile-width, 1450px) {
     padding: 45px 38px;
   }
   @include respond(0, $mobile-width) {

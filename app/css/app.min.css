@@ -1721,10 +1721,15 @@ body.body-filter .page-content {
     margin: 0 4px; }
   .card .options {
     color: #929699;
-    font-size: 17px;
     margin-top: 20px;
     line-height: 1.646;
     font-family: Verdana, sans-serif; }
+    @media only all and (min-width: 1400px) {
+      .card .options {
+        font-size: 17px; } }
+    @media only all and (min-width: 0) and (max-width: 1399px) {
+      .card .options {
+        font-size: 15px; } }
   .card:hover {
     box-shadow: 0 0 20px 3px rgba(37, 43, 51, 0.1); }
     .card:hover .credit-value {
@@ -1754,16 +1759,31 @@ body.body-filter .page-content {
   .card .tags {
     font-family: Verdana, sans-serif;
     display: flex;
-    font-size: 17px;
     margin-top: 9px; }
+    @media only all and (min-width: 1400px) {
+      .card .tags {
+        font-size: 17px; } }
+    @media only all and (min-width: 0) and (max-width: 1399px) {
+      .card .tags {
+        font-size: 15px; } }
   .card .card-content {
-    padding: 22px 40px 38px 40px;
     background: #fff; }
+    @media only all and (min-width: 1400px) {
+      .card .card-content {
+        padding: 22px 40px 38px 40px; } }
+    @media only all and (min-width: 0) and (max-width: 1399px) {
+      .card .card-content {
+        padding: 22px 25px 38px 25px; } }
   .card .name {
-    font-size: 28px;
     color: #172027;
     font-weight: bold;
     line-height: 1.475; }
+    @media only all and (min-width: 1400px) {
+      .card .name {
+        font-size: 28px; } }
+    @media only all and (min-width: 0) and (max-width: 1399px) {
+      .card .name {
+        font-size: 21px; } }
     .card .name a {
       color: #172027;
       text-decoration: none; }
@@ -1795,10 +1815,10 @@ select {
 
 .page-content {
   flex: 1; }
-  @media only all and (min-width: 1367px) {
+  @media only all and (min-width: 1450px) {
     .page-content {
       padding: 52px 68px 106px 68px; } }
-  @media only all and (min-width: 1024px) and (max-width: 1366px) {
+  @media only all and (min-width: 1024px) and (max-width: 1449px) {
     .page-content {
       padding: 45px 38px; } }
   @media only all and (min-width: 0) and (max-width: 1023px) {
