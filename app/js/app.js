@@ -234,7 +234,7 @@ $(function () {
       1220: {
         slidesPerView: 2,
       },
-      1360: {
+      1600: {
         slidesPerView: 3,
       },
     },

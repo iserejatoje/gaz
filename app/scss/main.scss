@@ -411,10 +411,10 @@ body {
     margin-top: 35px;
   }
 
-  @include respond(1600px) {
+  @include respond(1366px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @include respond(1180px, 1600px) {
+  @include respond(1180px, 1366px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @include respond(0, 1180px) {

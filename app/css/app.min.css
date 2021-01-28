@@ -1698,10 +1698,10 @@ body.body-filter .page-content {
   @media only all and (min-width: 0) and (max-width: 1023px) {
     .catalog {
       margin-top: 35px; } }
-  @media only all and (min-width: 1600px) {
+  @media only all and (min-width: 1366px) {
     .catalog {
       grid-template-columns: repeat(3, 1fr); } }
-  @media only all and (min-width: 1180px) and (max-width: 1599px) {
+  @media only all and (min-width: 1180px) and (max-width: 1365px) {
     .catalog {
       grid-template-columns: repeat(2, 1fr); } }
   @media only all and (min-width: 0) and (max-width: 1179px) {
