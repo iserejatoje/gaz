@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .nano {
   position: relative;
@@ -7,14 +8,18 @@
 }
 
 .nano > .nano-content {
-  outline: none;
-  position: absolute;
-  overflow: scroll;
-  overflow-x: hidden;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    margin-right: 0 !important;
+  @include respond($mobile-width) {
+    outline: none;
+    position: absolute;
+    overflow: scroll;
+    overflow-x: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
 }
 
 .nano > .nano-content::-webkit-scrollbar {

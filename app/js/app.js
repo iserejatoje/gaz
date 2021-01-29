@@ -193,11 +193,11 @@ $(function () {
 
     }
 
-    if ($(".filter").length > 0)
+    if ($(".filter").length > 0 && !$('.filter').hasClass('mobile'))
         $(".nano").nanoScroller({iOSNativeScrolling: true});
 
     function filterInitScrollPosition() {
-        if ($(".filter").is(":visible")) {
+        if ($(".filter").is(":visible") && !$('.filter').hasClass('mobile')) {
             if ($(window).scrollTop() >= $("header").height()) {
                 $(".filter").addClass("filter-fixed");
                 $("body").addClass("body-filter");
@@ -206,7 +206,8 @@ $(function () {
             } else {
                 $(".filter").css("bottom", "0").removeClass("filter-fixed");
                 $("body").removeClass("body-filter");
-                $(".nano").nanoScroller({destroy: true}).nanoScroller();
+                $(".nano").nanoScroller({destroy: true});
+                $(".nano").nanoScroller({iOSNativeScrolling: true});
             }
         }
     }
@@ -217,7 +218,7 @@ $(function () {
     }
 
     function filterInitPosition() {
-        if ($(".filter").is(":visible")) {
+        if ($(".filter").is(":visible") && !$('.filter').hasClass('mobile')) {
             let bottom =
                 window.innerHeight -
                 ($("footer").offset().top - $(document).scrollTop());
@@ -242,12 +243,20 @@ $(function () {
             }
 
             // $(".filter form").css("height", window.innerHeight - 100 - bottom + 'px');
-            console.log(bottom, window.innerHeight);
+            // console.log(bottom, window.innerHeight);
             // console.log(Math.abs(bottom));
 
             $(".nano").nanoScroller({destroy: true});
-            $(".nano").nanoScroller();
+            $(".nano").nanoScroller({iOSNativeScrolling: true});
         }
+    }
+
+    let phones = document.querySelectorAll("input.phone");
+    for (let i = 0; i < phones.length; i++) {
+        var phoneMask = IMask(
+            phones[i], {
+                mask: '{7}(000)000-00-00'
+            });
     }
 
     function setFilterHeight() {
@@ -263,11 +272,48 @@ $(function () {
     });
 
     $(window).on("resize", function () {
+        if ($(window).width() > 1024) {
+            $(".nano").nanoScroller({iOSNativeScrolling: true});
+            $('body').removeClass('filter-opened');
+            $('.filter').removeClass('mobile');
+        }
         filterInitPosition();
     });
 
     $(".burger-button").on("click", function () {
         $("body").addClass("menu-opened");
+    });
+
+    $(".callback-link").on("click", function () {
+        $("body").addClass("callback-opened");
+        return false;
+    });
+
+    $(".close-form_button").on("click", function () {
+        $("body").removeClass("callback-opened");
+    });
+
+    $(".overlay").on("click", function (e) {
+        if ($(e.target).hasClass('overlay')) {
+            $("body").removeClass("callback-opened");
+        }
+    });
+
+    $(".filter-mobile_close").on("click", function () {
+        $("body").removeClass("filter-opened");
+        $(".filter").removeClass("mobile");
+    });
+
+    $(".mobile-filter_toggle").on("click", function () {
+        $(".filter").addClass("mobile");
+        $("body").addClass("filter-opened");
+        $(".nano").nanoScroller({destroy: true});
+    });
+
+    $(".show_all-link").on("click", function () {
+        $(this).closest('.filter-options').find('.filter-content').show();
+        $(this).remove();
+        return false;
     });
 
     $(".menu-close").on("click", function () {
