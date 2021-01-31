@@ -476,21 +476,103 @@ body {
 }
 
 .home-slider {
-  position: relative;
-  padding-bottom: 65px;
+  .home-container {
 
+    @include respond(1680px) {
+      max-width: 1160px;
+    }
+    @include respond(1530px, 1680px) {
+      max-width: 1270px;
+    }
+    @include respond(1366px, 1530px) {
+      padding-left: 118px;
+      padding-right: 118px;
+      box-sizing: border-box;
+    }
+    @include respond(0, 1366px) {
+      padding-left: 118px;
+      padding-right: 118px;
+      box-sizing: border-box;
+      max-width: 1100px;
+    }
+
+    flex: 1;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .title {
+      font-size: 48px;
+      color: $white;
+      font-weight: bold;
+      line-height: 1.208;
+      @include respond(1366px) {
+        max-width: 400px;
+      }
+    }
+    .description {
+      font-size: 18px;
+      font-weight: 300;
+      color: $white;
+      line-height: 1.127;
+      margin-top: 20px;
+    }
+  }
+  position: relative;
+  .swiper-slide {
+    @include respond(1366px) {
+      padding-bottom: 190px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
   .swiper-button-prev {
-    left: 60px;
+    @include respond(1580px) {
+      left: 60px;
+    }
+    @include respond(0, 1580px) {
+      left: 30px;
+    }
   }
   .swiper-button-next {
-    right: 60px;
+    @include respond(1580px) {
+      right: 60px;
+    }
+    @include respond(0, 1580px) {
+      right: 30px;
+    }
   }
+  .home-cars {
+    position: absolute;
+    @include respond(1790px) {
+      right: 235px;
+      bottom: 18px;
+    }
+    @include respond(1570px, 1790px) {
+      right: 170px;
+      bottom: 18px;
+    }
+    @include respond(1366px, 1570px) {
+      right: 111px;
+      bottom: 42px;
+      max-width: 768px;
+    }
+    @include respond(0, 1366px) {
+      display: none;
+    }
+
+  }
+
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto 0;
+    transform: translateY(-15px);
     z-index: 100;
     svg {
       transition: fill 200ms linear;
@@ -503,8 +585,18 @@ body {
     }
   }
 
-  .swiper-slide {
-    min-height: 320px;
+}
+
+.swiper-pagination {
+  @include respond(1366px) {
+    position: absolute;
+    text-align: center;
+    transition: .3s opacity;
+    transform: translate3d(0, -70px, 0);
+    z-index: 10
+  }
+  @include respond(0, 1366px) {
+    display: none;
   }
 }
 
@@ -1745,6 +1837,12 @@ footer {
   padding-top: 60px;
   padding-bottom: 60px;
   box-sizing: border-box;
+
+  .swiper-container {
+    padding-bottom: 135px;
+    margin-bottom: -100px;
+  }
+
   .title {
     @include respond($mobile-width) {
       font-size: 40px;
