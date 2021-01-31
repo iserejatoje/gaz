@@ -123,6 +123,7 @@ body {
 }
 
 .filter {
+  border-top: 1px solid $filter-border;
   .checkbox:not(.simple) {
     min-height: 34px;
     padding-right: 7px;
@@ -149,8 +150,25 @@ body {
   margin-top: 35px;
 }
 
+.form-controls {
+
+  @include respond(800px) {
+    padding-bottom: 38px;
+  }
+  @include respond(0, 800px) {
+    padding-bottom: 16px;
+  }
+  @include respond(0, 960px) {
+    padding-top: 20px;
+  }
+  @include respond(800px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .checkbox.simple {
-  padding-left: 34px;
+  padding-left: 30px;
   font-size: 14px;
   display: inline-block;
   a {
@@ -164,8 +182,13 @@ body {
   }
 }
 
+.filter {
+  .checkbox {
+    display: flex;
+  }
+}
+
 .checkbox {
-  display: flex;
   color: $credit-title;
   align-items: center;
   cursor: pointer;
@@ -452,6 +475,39 @@ body {
   }
 }
 
+.home-slider {
+  position: relative;
+  padding-bottom: 65px;
+
+  .swiper-button-prev {
+    left: 60px;
+  }
+  .swiper-button-next {
+    right: 60px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 100;
+    svg {
+      transition: fill 200ms linear;
+    }
+    &:hover {
+      background: $yellow;
+      svg {
+        fill: $black;
+      }
+    }
+  }
+
+  .swiper-slide {
+    min-height: 320px;
+  }
+}
+
 .help-icon {
   font-weight: bold;
   font-size: 10px;
@@ -463,6 +519,15 @@ body {
   justify-content: center;
   position: relative;
   z-index: 10;
+
+  &.navy {
+    background: $navy;
+    transform: translateY(-8px) translateX(4px) !important;
+
+    .bubble {
+      text-transform: none;
+    }
+  }
 
   &:hover {
     background: $navy;
@@ -630,10 +695,8 @@ body {
   }
 }
 
-
 .yellow-button {
   background: $yellow;
-  max-width: 270px;
   width: 100%;
   cursor: pointer;
   border: none;
@@ -642,6 +705,20 @@ body {
   height: 60px;
   text-transform: uppercase;
   outline: none;
+
+  &:hover {
+    background: transparentize($yellow, .15);
+  }
+
+  &:not(.yellow-button_small) {
+    max-width: 270px;
+  }
+  &.yellow-button_small {
+    @include respond(800px) {
+      max-width: 240px;
+    }
+  }
+
 }
 
 a,
@@ -940,31 +1017,17 @@ body.filter-opened {
         padding-left: 60px;
         padding-right: 60px;
       }
-      @include respond(0, 1366px) {
+      @include respond(960px, 1366px) {
         padding-left: 30px;
         padding-right: 30px;
+      }
+      @include respond(0, 960px) {
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
     }
 
-  }
-
-  .car-order {
-    min-width: 320px;
-    box-sizing: border-box;
-    letter-spacing: .4px;
-
-    @include respond($mobile-width) {
-      padding: 41px 26px 26px 26px;
-    }
-    @include respond(0, $mobile-width) {
-      padding: 41px 30px 30px 30px;
-    }
-
-    .help-icon {
-      padding-left: 1px;
-      box-sizing: border-box;
-    }
   }
 
   .help-icon {
@@ -974,6 +1037,28 @@ body.filter-opened {
   }
 
   .car-order {
+    box-sizing: border-box;
+
+    @include respond($mobile-width) {
+      min-width: 320px;
+    }
+
+    @include respond($mobile-width) {
+      padding: 41px 26px 26px 26px;
+    }
+    @include respond(960px, $mobile-width) {
+      padding: 41px 30px 30px 30px;
+    }
+    @include respond(0, 960px) {
+      .yellow-button {
+        max-width: 100%;
+      }
+      padding: 41px 20px 30px 20px;
+    }
+
+    .help-icon {
+      box-sizing: border-box;
+    }
 
     .credit-block {
       font-size: 16px;
@@ -1285,6 +1370,11 @@ footer {
   }
 
   .logo {
+
+    .icons-title {
+      margin-top: 15px;
+    }
+
     @include respond(0, $footer-mobile) {
       text-align: center;
     }
@@ -1375,8 +1465,13 @@ footer {
 }
 
 .toggle-content {
-  padding: 32px 35px 10px 35px;
   display: none;
+  @include respond(960px) {
+    padding: 32px 35px 10px 35px;
+  }
+  @include respond(0, 960px) {
+    padding: 32px 20px 10px 20px;
+  }
   .title {
     font-size: 18px;
     letter-spacing: 1px;
@@ -1546,7 +1641,12 @@ footer {
         background: $navy;
       }
       .value {
-        width: 50%;
+        @include respond(940px) {
+          width: 50%;
+        }
+        @include respond(0, 940px) {
+          width: 100%;
+        }
         padding-left: 24px;
         box-sizing: border-box;
         position: relative;
@@ -1557,8 +1657,42 @@ footer {
   
 }
 
+.subtitle {
+  font-size: 18px;
+  color: $black;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.278;
+
+  @include respond(960px) {
+    margin: 30px 0;
+  }
+  @include respond(0, 960px) {
+    margin: 24px 0;
+  }
+}
+
 .forms-wrapper {
-  margin-bottom: 100px;
+  @include respond($mobile-width) {
+    margin-bottom: 100px;
+  }
+  @include respond(0, $mobile-width) {
+    margin-bottom: 50px;
+  }
+
+  .filename {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: calc(100% - 35px);
+    line-height: 1.8;
+  }
+}
+
+[type="file"] {
+  text-indent: -999999px;
+  background: #f4f4f6;
+  cursor: pointer;
 }
 
 .toggle-wrapper {
@@ -1567,8 +1701,10 @@ footer {
     .toggle-content {
       display: block;
     }
-    svg {
-      transform: rotate(180deg);
+    .circle {
+      svg {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -1610,7 +1746,12 @@ footer {
   padding-bottom: 60px;
   box-sizing: border-box;
   .title {
-    font-size: 40px;
+    @include respond($mobile-width) {
+      font-size: 40px;
+    }
+    @include respond(0, $mobile-width) {
+      font-size: 24px;
+    }
     text-transform: uppercase;
     line-height: 1.075;
     font-weight: 500;
@@ -1681,9 +1822,164 @@ body.callback-opened {
   }
 }
 
+.file-wrapper {
+  position: relative;
+  cursor: pointer;
+
+  svg {
+    fill: transparentize($black, .6);
+  }
+}
+
+.page {
+  > .column {
+    @include respond(960px) {
+      margin-bottom: 30px;
+    }
+    @include respond(0, 960px) {
+      margin-bottom: 15px;
+    }
+  }
+  .column {
+    @include respond(960px) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  .column-2 {
+    .form-field {
+      @include respond(0, 960px) {
+        max-width: 100%;
+        width: 100%;
+      }
+      @include respond(960px) {
+        max-width: calc(50% - 15px);
+      }
+    }
+  }
+  .column-4 {
+    justify-content: space-between;
+    width: 100%;
+
+    > .form-field {
+      @include respond(1380px) {
+        max-width: calc(50% - 15px);
+      }
+      &:first-child {
+        @include respond(960px, 1380px) {
+          margin-bottom: 30px;
+        }
+        @include respond(0, 960px) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    @include respond(0, 1380px) {
+      display: block;
+    }
+    @include respond(1380px) {
+      display: flex;
+    }
+  }
+
+  .attached {
+    svg {
+      fill: transparentize($black, .7);
+    }
+  }
+
+  svg {
+    display: block;
+  }
+
+  .file-block {
+    position: relative;
+    width: 100%;
+  }
+
+  .file-wrapper {
+    &:not(.filled) {
+      .filename {
+        color: transparentize($black, .35);
+      }
+      & + .attached {
+        display: none;
+      }
+      .unattached {
+        display: block;
+      }
+    }
+    &.filled {
+      color: $black;
+      & + .attached {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+      }
+      .unattached {
+        display: none;
+      }
+    }
+  }
+
+  .attached {
+    cursor: pointer;
+    &:hover {
+      svg {
+        fill: $black;
+      }
+    }
+  }
+
+  .file-span {
+    cursor: pointer;
+    pointer-events: none;
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+    position: absolute;
+    left: 18px;
+    top: 12px;
+    right: 10px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+}
+
 .input-row {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  label {
+    margin-bottom: 8px;
+  }
+}
+
+form {
+  textarea {
+    padding: 15px;
+  }
   input {
+    padding: 0 15px;
+  }
+  input,
+  textarea {
+    &:focus {
+      border: 1px solid $navy;
+    }
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     &::placeholder {
       font-size: 14px;
       color: transparentize($dark, .35);
@@ -1692,21 +1988,50 @@ body.callback-opened {
 
     font-family: Verdana, sans-serif;
     font-size: 14px;
-    height: 48px;
-    padding: 0 15px;
+    height: 50px;
     border: 1px solid $input-border;
     outline: none;
   }
-}
+  .form-field {
 
-.input-row {
-  display: flex;
-  flex-direction: column;
+    @include respond(960px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+    }
 
-  label {
+    @include respond(0, 960px) {
+      margin-bottom: 15px;
+    }
+    > label:first-child {
+      margin-bottom: 10px;
+    }
+  }
+  label:not(.checkbox) {
     font-size: 14px;
     font-weight: bold;
     display: inline-block;
-    margin-bottom: 10px;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.checkboxes {
+  @include respond(0, 800px) {
+    margin-bottom: 30px;
+  }
+  .checkbox-policy {
+    @include respond(800px) {
+      margin-right: 38px;
+    }
+  }
+  @include respond(0, 1490px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .checkbox-policy {
+      margin-bottom: 22px;
+    }
   }
 }

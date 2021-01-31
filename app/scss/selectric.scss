@@ -3,6 +3,7 @@
 .selectric-wrapper {
   position: relative;
   cursor: pointer;
+  width: 100%;
 }
 
 .selectric-responsive {
@@ -11,9 +12,9 @@
 
 .selectric {
   border: 1px solid transparentize($black, .7);
-  background: $gray;
+  background: inherit;
   position: relative;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .selectric .label {
@@ -32,10 +33,9 @@
 
 .selectric .button {
   background: none;
-  border-radius: 0px;
-  display: block;
+  border-radius: 0;
   position: absolute;
-  right: 0px;
+  right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -76,8 +76,7 @@
 }
 
 .selectric-open .selectric {
-  border-color: #c4c4c4;
-  background: #dfdfdf;
+  border-color: $navy;
 }
 
 .selectric-open .selectric-items {
@@ -144,7 +143,6 @@
   display: block !important;
 }
 
-/* Items box */
 .selectric-items {
   display: none;
   position: absolute;
@@ -154,6 +152,7 @@
   border: 1px solid #C4C4C4;
   z-index: -1;
   box-shadow: 0 0 10px -6px;
+  outline: none;
 }
 
 .selectric-items .selectric-scroll {

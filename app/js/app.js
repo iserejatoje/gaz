@@ -1,8 +1,6 @@
 $(function () {
-    let
-        $select = $("select");
 
-    if ($select.length > 0) $select.selectric();
+    $("select").selectric();
 
     if ($(".filter").length > 0) {
 
@@ -10,10 +8,6 @@ $(function () {
             $(this).closest(".filter-row").toggleClass("open");
             e.preventDefault();
         });
-
-        //
-        //
-        //
 
         let priceSlider = document.getElementById("price-slider");
         noUiSlider.create(priceSlider, {
@@ -150,17 +144,6 @@ $(function () {
         //
         //
 
-        let numbers = document.querySelectorAll(".number-format"),
-            maskOptions = {
-                mask: Number,
-                negative : false,
-                thousandsSeparator: " ",
-            };
-
-        for (let i = 0; i < numbers.length; i++) {
-            IMask(numbers[i], maskOptions);
-        }
-
         let years_numbers = document.querySelectorAll(".number"),
             maskOptionsYears = {
                 mask: Number,
@@ -193,15 +176,25 @@ $(function () {
 
     }
 
+    let numbers = document.querySelectorAll(".number-format"),
+        maskOptions = {
+            mask: Number,
+            negative : false,
+            thousandsSeparator: " ",
+        };
+
+    for (let i = 0; i < numbers.length; i++) {
+        IMask(numbers[i], maskOptions);
+    }
+
     if ($(".filter").length > 0 && !$('.filter').hasClass('mobile'))
         $(".nano").nanoScroller({iOSNativeScrolling: true});
 
     function filterInitScrollPosition() {
         if ($(".filter").is(":visible") && !$('.filter').hasClass('mobile')) {
-            if ($(window).scrollTop() >= $("header").height()) {
+            if ($(window).scrollTop() >= $("header").height() + $('.home-slider').outerHeight()) {
                 $(".filter").addClass("filter-fixed");
                 $("body").addClass("body-filter");
-
                 filterInitPosition();
             } else {
                 $(".filter").css("bottom", "0").removeClass("filter-fixed");
@@ -211,6 +204,52 @@ $(function () {
             }
         }
     }
+
+    let brands = '';
+
+    $.getJSON("/cars.json", function(data){
+        brands = data.list;
+        let html = '<option value="">Выберите марку</option>';
+
+        for (let k in brands) {
+            html += '<option value="'+ k +'">' + k + '</option>';
+        }
+        $('#brand').html(html);
+
+        let selectric = $('.lazy-select').data('selectric');
+        selectric.refresh();
+
+    }).fail(function(){
+        console.log("Ошибка при загрузке списка брендов");
+    });
+
+    $('#brand').on('change', function() {
+        let html = '';
+
+        if ($(this).val() !== '') {
+            $.each(brands[$(this).val()], function(i, val) {
+                html += '<option value="'+ val +'">' + val + '</option>';
+            });
+
+            $('#model').html(html).removeAttr('disabled');
+
+            let selectric = $('#model').data('selectric');
+            selectric.refresh();
+        } else {
+            $('#model').html('').attr('disabled', true);
+
+            let selectric = $('#model').data('selectric');
+            selectric.init();
+        }
+
+    });
+
+    $('#photo').change(function() {
+        if ($(this)[0].files.length == 1) {
+            $('.filename').html($(this)[0].files[0].name);
+            $('.file-wrapper').addClass('filled');
+        }
+    });
 
     function getRectTop(el) {
         let rect = el.getBoundingClientRect();
@@ -253,9 +292,18 @@ $(function () {
 
     let phones = document.querySelectorAll("input.phone");
     for (let i = 0; i < phones.length; i++) {
-        var phoneMask = IMask(
+        let phoneMask = IMask(
             phones[i], {
-                mask: '{7}(000)000-00-00'
+                mask: '+{7} (000) 000-00-00'
+            });
+    }
+
+
+    let email = document.querySelectorAll("input.email");
+    for (let i = 0; i < email.length; i++) {
+        let emailMask = IMask(
+            email[i], {
+                mask: /^\S*@?\S*$/
             });
     }
 
@@ -284,6 +332,12 @@ $(function () {
         $("body").addClass("menu-opened");
     });
 
+    $(".attached").on("click", function () {
+        $("#photo").val(null);
+        $('.file-wrapper').removeClass('filled');
+        $('.filename').html('Загрузить файл (jpg, png)');
+    });
+
     $(".callback-link").on("click", function () {
         $("body").addClass("callback-opened");
         return false;
@@ -291,6 +345,16 @@ $(function () {
 
     $(".close-form_button").on("click", function () {
         $("body").removeClass("callback-opened");
+    });
+
+    $(".scroll-to-form").on("click", function () {
+        $("body, html").stop().animate({scrollTop: $('.forms-wrapper').offset().top + 'px'}, 1000);
+    });
+
+    $(".form-tabs").on("click", "a", function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.tabs-content .page').eq($(this).index()).show().siblings().hide();
+        return false;
     });
 
     $(".overlay").on("click", function (e) {
@@ -336,7 +400,7 @@ $(function () {
 
     if ($(".filter").length > 0) $(".filter").addClass("fade-in");
 
-    let swiper = new Swiper('.swiper-container', {
+    let swiper = new Swiper('.car-slider .swiper-container', {
         spaceBetween: 30,
         breakpoints: {
             0: {
@@ -350,8 +414,15 @@ $(function () {
             },
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.car-slider .swiper-button-next',
+            prevEl: '.car-slider .swiper-button-prev',
+        },
+    });
+
+    let swiper_home = new Swiper('.home-slider .swiper-container', {
+        navigation: {
+            nextEl: '.home-slider .swiper-button-next',
+            prevEl: '.home-slider .swiper-button-prev',
         },
     });
 });
