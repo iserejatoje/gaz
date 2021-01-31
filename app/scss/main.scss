@@ -573,7 +573,7 @@ body {
     bottom: 0;
     margin: auto 0;
     transform: translateY(-15px);
-    z-index: 100;
+    z-index: 11;
     svg {
       transition: fill 200ms linear;
     }
@@ -938,7 +938,7 @@ body.filter-opened {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 20;
   overflow: auto;
   background: $dark;
   color: $white;
