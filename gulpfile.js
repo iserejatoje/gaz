@@ -11,6 +11,8 @@ let paths = {
             'node_modules/nouislider/distribute/nouislider.min.js',
             'node_modules/imask/dist/imask.min.js',
             baseDir + '/js/swiper-bundle.min.js',
+            baseDir + '/js/fancybox.min.js',
+            baseDir + '/js/handlebars.min.js',
             baseDir + '/js/wNumb.min.js',
             baseDir + '/js/selectric.min.js',
             baseDir + '/js/jquery.nanoscroller.min.js',
@@ -80,7 +82,7 @@ function deploy() {
         .pipe(rsync({
             root: 'app/',
             hostname: 'studioatom_main@studioatom.beget.tech',
-            destination: 'gaz.studioatom.beget.tech/wp-content/themes/gaz',
+            destination: 'gaz/public_html/wp-content/themes/gaz/test',
             relative: true,
             archive: true,
             checksum: true,
@@ -103,7 +105,7 @@ function styles() {
 
 function startwatch() {
     watch(baseDir + '/' + preprocessor + '/**/*', {usePolling: true}, styles);
-    watch('*.html').on("change", browserSync.reload);
+    watch('*.html', {usePolling: true}).on("change", browserSync.reload);
     watch(baseDir + '/**/*.{' + fileswatch + '}', {usePolling: true}).on('change', browserSync.reload);
     watch([baseDir + '/js/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], {usePolling: true}, scripts);
 }
